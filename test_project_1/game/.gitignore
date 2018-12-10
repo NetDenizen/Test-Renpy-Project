@@ -1,0 +1,5 @@
+*.un~
+*.rpyc
+*.bak
+saves
+cache
