@@ -4,13 +4,13 @@ style ExitButtonStyle:
 
 transform ButtonTransform:
     on hover:
-        linear 0.5 alpha 1.0 
+        linear 0.5 alpha 1.0
     on idle:
-        linear 0.5 alpha 0.0 
+        linear 0.5 alpha 0.0
     on selected_hover:
-        linear 0.5 alpha 1.0 
+        linear 0.5 alpha 1.0
     on selected_idle:
-        linear 0.5 alpha 0.0 
+        linear 0.5 alpha 0.0
 
 screen ImageMapTest_screen():
     fixed:
@@ -20,8 +20,8 @@ screen ImageMapTest_screen():
         hover "ImageMapTest_selected.png"
         selected_hover "ImageMapTest_selected.png"
 
-        hotspot (0, 0, 960, 1080) action Jump("ImageMapTest_FirstPane") at ButtonTransform 
-        hotspot (960, 0, 960, 1080) action Jump("ImageMapTest_SecondPane") at ButtonTransform 
+        hotspot (0, 0, 960, 1080) action Jump("ImageMapTest_FirstPane") at ButtonTransform
+        hotspot (960, 0, 960, 1080) action Jump("ImageMapTest_SecondPane") at ButtonTransform
 
 label ImageMapTest:
 
