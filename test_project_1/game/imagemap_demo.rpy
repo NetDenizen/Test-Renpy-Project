@@ -39,6 +39,7 @@ label ImageMapTest:
 label ImageMapTest_start:
 
     n "Try choosing either in the group of circles, or pressing the X to end the demonstration."
+    #$ renpy.pause()
 
     jump ImageMapTest_start
 

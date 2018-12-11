@@ -8,6 +8,7 @@ define FadeWhite = Fade(0.5, 0.0, 0.5, color="#ffffff")
 
 define n = Character("Narrator")
 define f = Character("Character Generation Fairy")
+define g = Character("Girl")
 
 default MC_sex = L_ArticledNoun("a", "male")
 default MC_OppositeSex = L_ArticledNoun("a", "female")
@@ -28,5 +29,6 @@ label start:
 
     call CharacterGeneration from _call_CharacterGeneration
     call ImageMapTest from _call_ImageMapTest
+    call ButtonMaskTest
 
     return
