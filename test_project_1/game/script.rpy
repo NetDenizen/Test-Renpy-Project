@@ -10,9 +10,9 @@ define n = Character("Narrator")
 define f = Character("Character Generation Fairy")
 define g = Character("Girl")
 
-default MC_sex = L_ArticledNoun("a", "male")
-default MC_OppositeSex = L_ArticledNoun("a", "female")
-default MC_name = ""
+define MC_sex = L_ArticledNoun("a", "male")
+define MC_OppositeSex = L_ArticledNoun("a", "female")
+define MC_name = ""
 
 # The game starts here.
 label start:
