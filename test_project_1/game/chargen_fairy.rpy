@@ -1,6 +1,6 @@
 label CharacterGeneration:
 
-    scene bg room
+    scene bg base
     with FadeWhite
 
     f "Hello! I'm the character generation fairy!"

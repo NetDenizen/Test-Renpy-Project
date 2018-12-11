@@ -14,10 +14,12 @@ define MC_sex = L_ArticledNoun("a", "male")
 define MC_OppositeSex = L_ArticledNoun("a", "female")
 define MC_name = ""
 
+image bg base = Solid("#b9b9b9")
+
 # The game starts here.
 label start:
 
-    scene bg room
+    scene bg base
 
     n "Welcome to the Emjay's visual novel demo!"
 
@@ -29,6 +31,6 @@ label start:
 
     call CharacterGeneration from _call_CharacterGeneration
     call ImageMapTest from _call_ImageMapTest
-    call ButtonMaskTest
+    call ButtonMaskTest from _call_ButtonMaskTest
 
     return

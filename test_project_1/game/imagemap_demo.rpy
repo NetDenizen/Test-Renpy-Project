@@ -25,7 +25,7 @@ screen ImageMapTest_screen():
 
 label ImageMapTest:
 
-    scene bg room
+    scene bg base
     with FadeWhite
 
     n "Next, we will demonstrate the use of imagemaps."

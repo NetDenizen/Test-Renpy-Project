@@ -45,7 +45,7 @@ screen ButtonMaskTest_screen():
 
 label ButtonMaskTest:
 
-    scene bg room
+    scene bg base
     with FadeWhite
 
     show subject
