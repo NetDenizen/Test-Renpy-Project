@@ -26,4 +26,6 @@ So far, it demonstrates:
 
 * Buttons
 
+* The custom 'ButtonMask' implementation
+
 More to come, later. Please let me know if you have any questions or feedback.
