@@ -456,7 +456,7 @@ label ButtonMaskTest_2_Top:
             $ ButtonStorage2.SetMask(7, None)
             $ ButtonStorage2.SetHover(Color("#ff00ff").rgb, 0, None)
             $ ButtonStorage2.SetSelecteds(Color("#ff00ff").rgb, 0, None)
-            $ SidesLength = 0
+            $ CrownLength = 0
             $ RazorUsed = True
     #else:
     #	if CurrentTool == "scissors":
