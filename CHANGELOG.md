@@ -1,5 +1,11 @@
 # Changelog
 
+## 2018-12-20 5.0
+
+* Add sound effects.
+* Include eyebrow shaving and shaving cream.
+* Small bugfixes and refactoring.
+
 ## 2018-12-19 4.0
 
 * Add effects test.

@@ -28,4 +28,6 @@ So far, it demonstrates:
 
 * The custom 'ButtonMask' implementation
 
+* Sound effects
+
 More to come, later. Please let me know if you have any questions or feedback.
