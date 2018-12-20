@@ -4,6 +4,8 @@ init python:
 define eye_open = ImageDissolve("blink_transition.png", 0.5, ramplen=128, reverse=False, time_warp=eyewarp)
 define eye_close = ImageDissolve("blink_transition.png", 0.5, ramplen=128, reverse=True, time_warp=eyewarp)
 
+define audio.punch = "sfx_punch.opus"
+
 label EffectsTest:
 
     scene bg base
@@ -27,8 +29,9 @@ label EffectsTest:
 
     mc "{b}{i}Bold italic text.{/b}{/i}"
 
+    play audio punch
     show fg black
-    with Fade(0.15, 0.0, 0.0, color="#000000") 
+    with Fade(0.15, 0.0, 0.0, color="#000000")
     with hpunch
 
     mc "I was punched!"
