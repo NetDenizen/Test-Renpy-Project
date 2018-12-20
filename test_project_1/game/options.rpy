@@ -23,7 +23,7 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "3.0"
+define config.version = "4.0"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
@@ -211,3 +211,7 @@ init python:
 ## by a slash.
 
 # define build.itch_project = "renpytom/test-project"
+define config.imagemap_cache = True
+define config.cache_surfaces = True
+define config.debug_image_cache = False
+define config.image_cache_size_mb = 532

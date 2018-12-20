@@ -19,7 +19,9 @@ label CharacterGeneration:
 
     f "Now, I'll just need to know your name, and then we'll be done!"
 
-    $ MC_name = renpy.input("Enter your name:").strip()
+    python:
+        while not MC_name:
+            MC_name = renpy.input("Enter your name:").strip()
 
     f "So, your name is [MC_name] and you are [MC_sex.article] [MC_sex.noun]."
 

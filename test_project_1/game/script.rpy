@@ -4,17 +4,19 @@
             self.article = article
             self.noun = noun
 
-define FadeWhite = Fade(0.5, 0.0, 0.5, color="#ffffff")
+default MC_sex = L_ArticledNoun("a", "male")
+default MC_OppositeSex = L_ArticledNoun("a", "female")
+default MC_name = ""
 
 define n = Character("Narrator")
 define f = Character("Character Generation Fairy")
 define g = Character("Girl")
-
-define MC_sex = L_ArticledNoun("a", "male")
-define MC_OppositeSex = L_ArticledNoun("a", "female")
-define MC_name = ""
+define mc = Character("[MC_name]")
 
 image bg base = Solid("#b9b9b9")
+image fg black = Solid("#000000")
+
+define FadeWhite = Fade(0.5, 0.0, 0.0, color="#ffffff")
 
 # The game starts here.
 label start:
@@ -32,5 +34,7 @@ label start:
     call CharacterGeneration from _call_CharacterGeneration
     call ImageMapTest from _call_ImageMapTest
     call ButtonMaskTest from _call_ButtonMaskTest
+    call EffectsTest from _call_EffectsTest
+    call ButtonMaskTest_2 from _call_ButtonMaskTest_2
 
     return

@@ -1,4 +1,4 @@
-define CurrentTool = ""
+default CurrentTool = ""
 
 # TODO
 # fingers tool
@@ -8,13 +8,14 @@ define CurrentTool = ""
 # 2: Full length
 # 1: Trimmed with scissors (half transparency)
 # 0: Shaved with clippers (removed)
-define TopLength = 2
-define BottomLength = 2
+default TopLength = 2
+default BottomLength = 2
 
 define ButtonActions = {
-    Color("#ff0000").rgb : ( lambda: renpy.jump("ButtonMaskTest_CutBottom") ),
-    Color("#00ff00").rgb : ( lambda: renpy.jump("ButtonMaskTest_CutTop") )
-}
+                       Color("#ff0000").rgb : "ButtonMaskTest_CutBottom",
+                       Color("#00ff00").rgb : "ButtonMaskTest_CutTop"
+                       }
+default ButtonStorage = ButtonMaskStorage(ButtonActions)
 
 style ToolButtonStyle:
     color "#000000"
@@ -23,6 +24,15 @@ style ToolButtonStyle:
 
 transform ScissorTrim:
     alpha 0.5
+
+transform MapMouse:
+    on hover:
+        linear 0.5 alpha 0.5
+    on idle:
+        linear 0.5 alpha 0.0
+    on selected_hover:
+        linear 0.5 alpha 0.5
+    alpha 0.0
 
 layeredimage subject:
     always:
@@ -41,7 +51,7 @@ screen ButtonMaskTest_screen():
         textbutton "Clippers" text_size 27 align (0.90, 0.1) text_style "ToolButtonStyle" action Jump("ButtonMaskTest_ClippersSelected")
         textbutton "Scissors" text_size 27 align (0.90, 0.3) text_style "ToolButtonStyle" action Jump("ButtonMaskTest_ScissorsSelected")
         textbutton "Done"     text_size 27 align (0.90, 0.5) text_style "ToolButtonStyle" action Jump("ButtonMaskTest_end")
-    add ButtonMask("buttonmask_mockup_1_mask.png", ButtonActions)
+    add ButtonMask(ButtonStorage) at MapMouse
 
 label ButtonMaskTest:
 
@@ -65,6 +75,13 @@ label ButtonMaskTest:
 
     show screen ButtonMaskTest_screen
     with dissolve
+    python:
+        ButtonStorage.AddMask("buttonmask_mockup_1_bottom_mask.png")
+        ButtonStorage.AddMask("buttonmask_mockup_1_top_mask.png")
+        ButtonStorage.AddHover(Color("#ff0000").rgb, "buttonmask_mockup_1_bottom_hover.png")
+        ButtonStorage.AddHover(Color("#00ff00").rgb, "buttonmask_mockup_1_top_hover.png")
+        ButtonStorage.AddSelected(Color("#ff0000").rgb, "buttonmask_mockup_1_bottom_selected.png")
+        ButtonStorage.AddSelected(Color("#00ff00").rgb, "buttonmask_mockup_1_top_selected.png")
 
     show screen ButtonMaskBlocker
     g "My hair is yours, [MC_name]-chan!"
