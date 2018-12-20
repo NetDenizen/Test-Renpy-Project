@@ -1,5 +1,13 @@
 # Changelog
 
+## 2018-12-19 4.0
+
+* Add effects test.
+* Add second buttonmask test.
+* Use default keyword for all mutable data.
+* Expand image cache.
+* More reliable text entry method.
+
 ## 2018-12-11 3.0
 
 * Actually add version number to game.
