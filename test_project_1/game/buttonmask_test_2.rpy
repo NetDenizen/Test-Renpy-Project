@@ -78,7 +78,7 @@ define ButtonActions2 = {
                         Color("#ffff00").rgb : "ButtonMaskTest_2_Sides",
                         Color("#ff8000").rgb : "ButtonMaskTest_2_Nape",
                         Color("#ff00ff").rgb : "ButtonMaskTest_2_Top",
-                        Color("#ffff80").rgb : "ButtonMaskTest_2_Brows"
+                        Color("#ff0080").rgb : "ButtonMaskTest_2_Brows"
                         }
 default ButtonStorage2 = ButtonMaskStorage(ButtonActions2)
 
