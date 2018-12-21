@@ -1,5 +1,9 @@
 # Changelog
 
+## 2018-12-20 5.1
+
+* A bugfix.
+
 ## 2018-12-20 5.0
 
 * Add sound effects.
