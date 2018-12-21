@@ -295,7 +295,7 @@ label ButtonMaskTest_2_Front:
             $ FrontLength = 0
             $ RazorUsed = True
             with dissolve
-        elif CurrentTool == "cream" and CrownLength <= 88 and not FrontCream:
+        elif CurrentTool == "cream" and FrontLength <= 88 and not FrontCream:
             play audio cream_squirting
             if not CreamUsed:
                 $ FaceExpression = "nervous"
