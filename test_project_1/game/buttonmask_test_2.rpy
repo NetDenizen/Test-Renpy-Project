@@ -1,7 +1,7 @@
 #TODO: Better transition between layers
 #TODO: Resolve weird behavior with buttons being the first thing moused over
 
-define config.layers = ['master', 'buttons', 'face', 'top', 'nape', 'sides', 'front', 'transient', 'screens', 'overlay']
+define config.layers = ['master', 'buttons', 'body', 'face', 'top', 'nape', 'sides', 'front', 'transient', 'screens', 'overlay']
 define audio.scissors_cutting = "sfx_scissors_cutting.wav"
 define audio.clippers_shaving = "sfx_clippers_shaving.wav"
 define audio.razor_shaving = "sfx_razor_shaving.wav"
@@ -177,7 +177,7 @@ label ButtonMaskTest_2:
 
     scene bg_classroom onlayer master
     show bg_buttons onlayer master
-    show girl_body onlayer master
+    show girl_body onlayer body
     scene girl_face_neutral onlayer face
     scene girl_hair_top_long onlayer top
     scene girl_hair_nape_long onlayer nape
@@ -250,6 +250,7 @@ label ButtonMaskTest_2_Front:
                 $ ButtonStorage2.SetSelecteds(Color("#ff0000").rgb, 0, girl_hair_front_bob_mask)
                 $ FrontLength = 127
                 $ ScissorsUsed = True
+                with dissolve
             elif FrontLength > 88:
                 play audio scissors_cutting
                 scene girl_hair_front_pixie onlayer front
@@ -260,9 +261,7 @@ label ButtonMaskTest_2_Front:
                 $ ButtonStorage2.SetSelecteds(Color("#ff0000").rgb, 0, girl_hair_front_pixie_mask)
                 $ FrontLength = 88
                 $ ScissorsUsed = True
-            with dissolve
-            #elif FrontLength == 0 and not ClippersUsed:
-            #	scene girl_face_wincing onlayer face
+                with dissolve
         elif CurrentTool == "clippers" and not FrontCream:
             play audio clippers_shaving
             if FrontLength > 127 or (not ClippersUsed and not RazorUsed):
@@ -329,6 +328,7 @@ label ButtonMaskTest_2_Sides:
                 $ ButtonStorage2.SetSelecteds(Color("#ffff00").rgb, 0, girl_hair_sides_bob_mask)
                 $ SidesLength = 152
                 $ ScissorsUsed = True
+                with dissolve
             elif SidesLength > 50:
                 play audio scissors_cutting
                 scene girl_hair_sides_pixie onlayer sides
@@ -337,7 +337,7 @@ label ButtonMaskTest_2_Sides:
                 $ ButtonStorage2.SetSelecteds(Color("#ffff00").rgb, 0, girl_hair_sides_pixie_mask)
                 $ SidesLength = 50
                 $ ScissorsUsed = True
-            with dissolve
+                with dissolve
         elif CurrentTool == "clippers":
             play audio clippers_shaving
             if not ClippersUsed and not RazorUsed:
@@ -397,7 +397,7 @@ label ButtonMaskTest_2_Nape:
             $ ButtonStorage2.SetMask(7, None)
             $ ButtonStorage2.SetHover(Color("#ff8000").rgb, 0, None)
             $ ButtonStorage2.SetSelecteds(Color("#ff8000").rgb, 0, None)
-            $ NapeLength = 0
+            $ NapeLength = 6
             $ ClippersUsed = True
             with dissolve
         elif CurrentTool == "razor":
@@ -449,7 +449,7 @@ label ButtonMaskTest_2_Top:
                 $ ButtonStorage2.SetMask(8, girl_hair_top_bob_napeless_mask)
                 $ ButtonStorage2.SetHover(Color("#ff00ff").rgb, 0, girl_hair_top_bob_napeless_mask)
                 $ ButtonStorage2.SetSelecteds(Color("#ff00ff").rgb, 0, girl_hair_top_bob_napeless_mask)
-                if NapeLength > 0:
+                if NapeLength >= 76:
                     scene girl_hair_nape_pixie onlayer nape
                     $ ButtonStorage2.SetMask(7, girl_hair_nape_pixie_mask)
                     $ ButtonStorage2.SetHover(Color("#ff8000").rgb, 0, girl_hair_nape_pixie_mask)
@@ -473,10 +473,6 @@ label ButtonMaskTest_2_Top:
                 $ FaceExpression = "shocked"
             elif CrownLength > 76:
                 $ FaceExpression = "wincing"
-                #scene girl_hair_nape_pixie onlayer nape
-                #ButtonStorage2.SetMask(7, girl_hair_nape_pixie_mask)
-                #ButtonStorage2.SetHover(Color("#ff8000").rgb, 0, girl_hair_nape_pixie_mask)
-                #ButtonStorage2.SetSelecteds(Color("#ff8000").rgb, 0, girl_hair_nape_pixie_mask)
             else:
                 $ FaceExpression = "nervous"
             call ButtonMaskTest_2_ShowFace from _call_ButtonMaskTest_2_ShowFace_13
@@ -485,6 +481,12 @@ label ButtonMaskTest_2_Top:
                 $ ButtonStorage2.SetMask(8, girl_hair_top_buzz_mask)
                 $ ButtonStorage2.SetHover(Color("#ff00ff").rgb, 0, girl_hair_top_buzz_mask)
                 $ ButtonStorage2.SetSelecteds(Color("#ff00ff").rgb, 0, girl_hair_top_buzz_mask)
+                if CrownLength > 152 and CrownLength <= 215 and NapeLength >= 76:
+                    scene girl_hair_nape_pixie onlayer nape
+                    $ ButtonStorage2.SetMask(7, girl_hair_nape_pixie_mask)
+                    $ ButtonStorage2.SetHover(Color("#ff8000").rgb, 0, girl_hair_nape_pixie_mask)
+                    $ ButtonStorage2.SetSelecteds(Color("#ff8000").rgb, 0, girl_hair_nape_pixie_mask)
+                    $ NapeLength = 76
                 $ CrownLength = 6
                 $ ClippersUsed = True
             with dissolve
@@ -492,10 +494,6 @@ label ButtonMaskTest_2_Top:
             play audio razor_shaving
             if CrownLength > 76:
                 $ FaceExpression = "shocked"
-                #scene girl_hair_nape_pixie onlayer nape
-                #ButtonStorage2.SetMask(7, girl_hair_nape_pixie_mask)
-                #ButtonStorage2.SetHover(Color("#ff8000").rgb, 0, girl_hair_nape_pixie_mask)
-                #ButtonStorage2.SetSelecteds(Color("#ff8000").rgb, 0, girl_hair_nape_pixie_mask)
             else:
                 $ FaceExpression = "nervous"
             call ButtonMaskTest_2_ShowFace from _call_ButtonMaskTest_2_ShowFace_14
@@ -589,7 +587,7 @@ label ButtonMaskTest_2_Razor:
 
 label ButtonMaskTest_2_Cream:
     show screen ButtonMaskBlocker
-    if CurrentTool != "cream" and (FrontLength < 127 or CrownLength < 152):
+    if CurrentTool != "cream" and ( (FrontLength < 127 and FrontLength > 0 and not FrontCream) or (CrownLength < 152 and CrownLength > 0 and not CrownCream) ):
         $ CurrentTool = "cream"
         if AtFront:
             if not CreamUsed:
