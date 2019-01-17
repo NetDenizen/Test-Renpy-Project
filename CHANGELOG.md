@@ -1,5 +1,13 @@
 # Changelog
 
+## 2019-01-17 6.0
+
+* Remove unused buttons.
+* Gray out buttons when unavailable.
+* Only allow a head area to be highlighted, if available.
+* Make sound effects and transitions more consistent.
+* Heavily refactor code, and fix bugs.
+
 ## 2018-12-20 5.1
 
 * A bugfix.
