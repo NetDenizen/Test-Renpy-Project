@@ -86,20 +86,22 @@ init python:
                     return c.rgb
             return (0, 0, 0)
         def SetPos(self, x, y):
-            self.storage.XPos = x
-            self.storage.YPos = y
-            self.storage.CurrentColor = self._GetColorAt()
-            if self.storage.CurrentColor != self.storage.DownColor:
+            storage = self.storage
+            storage.XPos = x
+            storage.YPos = y
+            storage.CurrentColor = self._GetColorAt()
+            if storage.CurrentColor != storage.DownColor:
                 self.storage.DownColor = None
-            NewHoverState = self.storage.IsHovered()
-            if NewHoverState != self.storage.LastHoverState:
-                self.storage.RedrawNeeded = True
-            self.storage.LastHoverState = NewHoverState
+            NewHoverState = storage.IsHovered()
+            if NewHoverState != storage.LastHoverState:
+                storage.RedrawNeeded = True
+            storage.LastHoverState = NewHoverState
         def _BlitRenders(self, output, renders):
+            blit = output.blit
             for r in renders:
                 if r is None:
                     continue
-                output.blit( renpy.load_image(r), (0, 0) )
+                blit( renpy.load_image(r), (0, 0) )
         def render(self, width, height, st, at):
             output = renpy.Render(width, height)
             candidate = self.storage.IsSelected()
@@ -112,19 +114,20 @@ init python:
             return output
         def event(self, ev, x, y, st):
             self.SetPos(x, y)
+            storage = self.storage
             if ev.type == pygame.MOUSEBUTTONUP and ev.button == 1:
-                self.storage.OnButtonUp()
+                storage.OnButtonUp()
             elif ev.type == pygame.MOUSEBUTTONDOWN and ev.button == 1:
-                self.storage.OnButtonDown()
-            if self.storage.RedrawNeeded:
-                if self.storage.IsSelected() is not None:
+                storage.OnButtonDown()
+            if storage.RedrawNeeded:
+                if storage.IsSelected() is not None:
                     self.set_transform_event("selected_hover")
-                elif self.storage.IsHovered() is not None:
+                elif storage.IsHovered() is not None:
                     self.set_transform_event("hover")
                 else:
                     self.set_transform_event("idle")
                 renpy.redraw(self, 0)
-                self.storage.RedrawNeeded = False
+                storage.RedrawNeeded = False
             return None
         def visit(self):
             return []
