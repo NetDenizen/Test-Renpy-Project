@@ -1,5 +1,7 @@
 # Test Ren'Py Project
 
+THIS PROJECT IS NOW ARCHIVED. Not doing anything more with it, for the time being.
+
 This project is both to experiment and familiarize myself Ren'Py, and to provide others examples of a small project, utilizing different features of the engine, and uploaded to GitHub.
 
 So far, it demonstrates:
